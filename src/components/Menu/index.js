@@ -2,16 +2,17 @@ import React from 'react';
 import ButtonLink from '../ButtonLink';
 import Logo from '../../assets/images/MitoJsLogo.png';
 import './Menu.css'
+import { Link } from 'react-router-dom'
 
 export default function Main (){
     return(
         <nav className="Menu">
-            <a href="/">
+            <Link to="/">
                 <img className="Logo" alt="MitoJS" src={Logo} />
-            </a>
+            </Link>
 
-            <ButtonLink href="/" as="a" className="ButtonLink">
-                Novo Vídeo
+            <ButtonLink href="/cadastro/video" className="ButtonLink">
+                Publique um Novo Vídeo
             </ButtonLink>
         </nav>      
     );
