@@ -12,7 +12,7 @@ export default function Main (){
             </Link>
 
             <ButtonLink href="/cadastro/video" className="ButtonLink">
-                Publique um Novo Vídeo
+                Novo Vídeo
             </ButtonLink>
         </nav>      
     );

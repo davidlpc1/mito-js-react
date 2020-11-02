@@ -3,6 +3,28 @@ import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
 
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block",background: "#fff62d",borderRadius:13 }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block",background: "#fff62d",borderRadius:13 }}
+      onClick={onClick}
+    />
+  );
+}
+
 const Container = styled.ul`
   padding: 0;
   margin: 0;
@@ -43,11 +65,42 @@ const Slider = ({ children }) => (
   <Container>
     <SlickSlider {...{
       dots: false,
-      infinite: false,
+      infinite: true,
       speed: 300,
       centerMode: false,
       variableWidth: true,
       adaptiveHeight: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      cssEase: "linear",
+      pauseOnHover: true,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite:false,
+          }
+        }
+      ]
     }}
     >
       {children}
