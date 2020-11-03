@@ -1,27 +1,101 @@
 import React,{ useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault'
+import FormField from '../../../components/FormField';
 
 export default function CadastroCategoria(){
-    const [ nomeDaCategoria, setNomeDaCategoria] = useState('')
+    const valoresIniciais = {
+        nome:'',
+        descricao:'',
+        color: '',
+    }
+
+    const [categorias ,setCategorias] = useState([]);
+    const [ valores, setValores ] = useState(valoresIniciais);
+
+    function setValor(chave,valor){
+        setValores({
+            ...valores,
+            [chave]: valor
+        })
+    }
+
+    function handleChange(event){
+        const valueWillChange =  event.target.getAttribute('name')
+        setValor(valueWillChange, event.target.value)
+
+        if(valueWillChange === 'nome'){
+            if(valores.nome.length >= 18  ){
+                setValor('nome',`${valores.nome.substring(0,15)}...`)
+            }
+        }
+
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        setCategorias([
+            ...categorias,
+            valores
+        ]);
+
+        setValores(valoresIniciais)
+    }
 
     return (
         <PageDefault>
-            <h1>Cadastro de Categoria: {nomeDaCategoria}</h1>
+            <h1>Cadastro de Categoria: {valores.nome}</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
 
-                <label>
-                    Nome da Categoria
-                    <input type="text" 
-                    value={nomeDaCategoria}
-                    onChange={e => { 
-                        setNomeDaCategoria(e.target.value)
-                    }} />
-                </label>
+                <FormField 
+                    label='Nome da Categoria'
+                    type="text"
+                    name="nome"
+                    value={valores.nome}
+                    onChange={handleChange} 
+                    delet={true}
+                    onDelet={event => {
+                        setValor('nome','')
+                    }}
+                /> 
+                
+                <FormField
+                    label='Descrição'
+                    type="textarea"
+                    name="descricao"
+                    value={valores.descricao}
+                    onChange={handleChange}
+                    delet={false}
+                    onDelet={() => {}}
+                /> 
+
+                <FormField 
+                    label={'Cor'}
+                    type="color"
+                    name="color"
+                    value={valores.color}
+                    onChange={handleChange} 
+                    delet={false}
+                    onDelet={() => {}}
+                /> 
 
                 <button>Cadastrar</button>
             </form>
+
+            <ul>
+                {categorias.map((categoria,index) => {
+                    return(
+                        <li style={{
+                            background:categoria.color,
+                            maxWidth: 350,
+                            padding:10 
+                        }} key={`${categoria}-${index}`}>
+                            {categoria.nome}
+                        </li>
+                    )
+                })}
+            </ul>
 
             <Link to="/">
                Ir para a Home
