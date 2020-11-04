@@ -1,4 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable linebreak-style */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/button-has-type */
+/* eslint-disable linebreak-style */
 import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
@@ -8,7 +16,9 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block",background: "#fff62d",borderRadius:13 }}
+      style={{
+        ...style, display: 'block', background: '#fff62d', borderRadius: 13,
+      }}
       onClick={onClick}
     />
   );
@@ -19,7 +29,9 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block",background: "#fff62d",borderRadius:13 }}
+      style={{
+        ...style, display: 'block', background: '#fff62d', borderRadius: 13,
+      }}
       onClick={onClick}
     />
   );
@@ -60,7 +72,6 @@ export const SliderItem = styled.li`
   }
 `;
 
-
 const Slider = ({ children }) => (
   <Container>
     <SlickSlider {...{
@@ -72,7 +83,7 @@ const Slider = ({ children }) => (
       adaptiveHeight: true,
       autoplay: true,
       autoplaySpeed: 3000,
-      cssEase: "linear",
+      cssEase: 'linear',
       pauseOnHover: true,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
@@ -82,25 +93,25 @@ const Slider = ({ children }) => (
           settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-          }
+          },
         },
         {
           breakpoint: 600,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-            initialSlide: 1
-          }
+            initialSlide: 1,
+          },
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            infinite:false,
-          }
-        }
-      ]
+            infinite: false,
+          },
+        },
+      ],
     }}
     >
       {children}
@@ -108,4 +119,4 @@ const Slider = ({ children }) => (
   </Container>
 );
 
-export default Slider; 
+export default Slider;

@@ -1,7 +1,17 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable linebreak-style */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/button-has-type */
+/* eslint-disable linebreak-style */
 import React from 'react';
-import Menu from '../Menu'
-import Footer from '../Footer'
 import styled from 'styled-components';
+import Menu from '../Menu';
+import Footer from '../Footer';
 
 const Main = styled.main`
     background-color:var(--black);
@@ -10,14 +20,14 @@ const Main = styled.main`
     padding: 50px 5% 0;
 `;
 
-export default function PageDefault({ children }){
-    return (
-        <>
-            <Menu />
-                <Main>
-                    { children }
-                </Main>
-            <Footer />
-        </>
-    )
+export default function PageDefault({ children }) {
+  return (
+    <>
+      <Menu />
+      <Main>
+        { children }
+      </Main>
+      <Footer />
+    </>
+  );
 }

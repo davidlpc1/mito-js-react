@@ -6,9 +6,11 @@ function Footer() {
   return (
     <FooterBase>
       <a href="/">
-        <img src={LogoLight} alt="MITOJs"
+        <img
+          src={LogoLight}
+          alt="MITOJs"
           style={{
-            height:'20px'
+            height: '20px',
           }}
         />
       </a>
@@ -16,7 +18,7 @@ function Footer() {
         Orgulhosamente criado por
         {' '}
         <a href="https://www.instagram.com/davidlpc1/">
-          Davi Lucas 
+          Davi Lucas
         </a>
       </p>
     </FooterBase>

@@ -1,4 +1,5 @@
 import React from 'react';
+/* eslint-disable react/prop-types */
 import { VideoCardContainer } from './styles';
 
 function getYouTubeId(youtubeURL) {
@@ -8,7 +9,6 @@ function getYouTubeId(youtubeURL) {
       '$7',
     );
 }
-
 
 function VideoCard({ videoTitle, videoURL, categoryColor }) {
   const image = `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`;
