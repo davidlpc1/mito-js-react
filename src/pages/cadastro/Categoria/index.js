@@ -4,6 +4,7 @@
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '../../../components/Button';
 import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
 
@@ -86,7 +87,7 @@ export default function CadastroCategoria() {
           onDelet={() => {}}
         />
 
-        <button>Cadastrar</button>
+        <Button>Cadastrar</Button>
       </form>
 
       <ul>
