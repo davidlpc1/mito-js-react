@@ -18,8 +18,8 @@ const FormFieldWrapper = styled.div`
 const DeleteButton = styled.button`
   cursor: pointer;
   padding: 7px;
-  color: #fbb;
-  background-color: #f11;
+  color: var(--logo);
+  background-color: var(--primary);
   border: none;
   margin-left: 5px;
   outline: none;

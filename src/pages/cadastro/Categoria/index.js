@@ -98,7 +98,7 @@ export default function CadastroCategoria() {
               maxWidth: 350,
               padding: 10,
             }}
-            key={`${categoria}-${index}`}
+            key={`${categoria.nome}-${index}`}
           >
             {categoria.nome}
           </li>
