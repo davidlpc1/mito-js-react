@@ -50,7 +50,11 @@ export default function CadastroCategoria() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {valores.nome}
+        {' '}
+        <br />
+        <span style={{ maxWidth: 200 }}>
+          {valores.nome}
+        </span>
       </h1>
 
       <form onSubmit={handleSubmit}>
