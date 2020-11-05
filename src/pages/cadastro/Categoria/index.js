@@ -1,8 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/button-has-type */
-/* eslint-disable linebreak-style */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import FormField from '../../../components/FormField';
@@ -45,6 +44,18 @@ export default function CadastroCategoria() {
 
     setValores(valoresIniciais);
   }
+
+  useEffect(() => {
+    const URL_TOP = 'http://localhost:8080/categorias/';
+
+    fetch(URL_TOP)
+      .then(async (response) => {
+        const resposta = await response.json();
+        setCategorias([
+          ...resposta,
+        ]);
+      });
+  }, []);
 
   return (
     <PageDefault>
@@ -94,6 +105,12 @@ export default function CadastroCategoria() {
         <Button>Cadastrar</Button>
       </form>
 
+      {categorias.length === 0 && (
+        <div>
+          Loading...
+        </div>
+      )}
+
       <ul>
         {categorias.map((categoria, index) => (
           <li
@@ -101,6 +118,7 @@ export default function CadastroCategoria() {
               background: categoria.color,
               maxWidth: 350,
               padding: 10,
+              margin: 1,
             }}
             key={`${categoria.nome}-${index}`}
           >
