@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
+import './loading.css';
 
 export default function CadastroCategoria() {
   const valoresIniciais = {
@@ -108,8 +109,10 @@ export default function CadastroCategoria() {
       </form>
 
       {categorias.length === 0 && (
-        <div>
-          Loading...
+        <div className="lds-ellipsis">
+          <div />
+          <div />
+          <div />
         </div>
       )}
 
