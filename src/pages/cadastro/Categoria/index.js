@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../../components/Button';
 import FormField from '../../../components/FormField';
 import PageDefault from '../../../components/PageDefault';
-import './loading.css';
+import useForm from '../../../hooks/useForm';
+import '../../../loading.css';
 
 export default function CadastroCategoria() {
   const valoresIniciais = {
@@ -15,36 +16,10 @@ export default function CadastroCategoria() {
     color: '',
   };
 
+  const {
+    handleChange, valores, clearForm, onDeletName,
+  } = useForm(valoresIniciais);
   const [categorias, setCategorias] = useState([]);
-  const [valores, setValores] = useState(valoresIniciais);
-
-  function setValor(chave, valor) {
-    setValores({
-      ...valores,
-      [chave]: valor,
-    });
-  }
-
-  function handleChange(event) {
-    const valueWillChange = event.target.getAttribute('name');
-    setValor(valueWillChange, event.target.value);
-
-    if (valueWillChange === 'nome') {
-      if (valores.nome.length >= 18) {
-        setValor('nome', `${valores.nome.substring(0, 15)}...`);
-      }
-    }
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setCategorias([
-      ...categorias,
-      valores,
-    ]);
-
-    setValores(valoresIniciais);
-  }
 
   useEffect(() => {
     const URL_TOP = window.location.hostname.includes('localhost')
@@ -71,7 +46,7 @@ export default function CadastroCategoria() {
         </span>
       </h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={clearForm}>
 
         <FormField
           label="Nome da Categoria"
@@ -80,9 +55,7 @@ export default function CadastroCategoria() {
           value={valores.nome}
           onChange={handleChange}
           delet
-          onDelet={() => {
-            setValor('nome', '');
-          }}
+          onDelet={onDeletName}
         />
 
         <FormField
@@ -120,14 +93,15 @@ export default function CadastroCategoria() {
         {categorias.map((categoria, index) => (
           <li
             style={{
-              background: categoria.color,
+              background: categoria.cor,
               maxWidth: 350,
               padding: 10,
-              margin: 1,
+              marginBottom: 5,
+              borderBottom: '2px solid #eee',
             }}
             key={`${categoria.nome}-${index}`}
           >
-            {categoria.nome}
+            {categoria.titulo}
           </li>
         ))}
       </ul>

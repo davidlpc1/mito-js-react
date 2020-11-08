@@ -9,7 +9,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable linebreak-style */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Menu from '../Menu';
 import Footer from '../Footer';
 
@@ -18,13 +18,17 @@ const Main = styled.main`
     color: var(--white);
     flex:1;
     padding: 50px 5% 0;
+    margin:0;
+    ${({ paddingAll }) => css`
+      padding: ${paddingAll};
+    `}
 `;
 
-export default function PageDefault({ children }) {
+export default function PageDefault({ children, paddingAll }) {
   return (
     <>
       <Menu />
-      <Main>
+      <Main paddingAll={paddingAll}>
         { children }
       </Main>
       <Footer />

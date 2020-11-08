@@ -4,7 +4,7 @@ import LogoLight from '../../assets/images/MitoJsLogoLight.png';
 
 function Footer() {
   return (
-    <FooterBase>
+    <FooterBase style={{ margin: 0 }}>
       <a href="/">
         <img
           src={LogoLight}

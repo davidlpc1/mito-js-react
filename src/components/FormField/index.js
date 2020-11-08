@@ -11,7 +11,6 @@ const FormFieldWrapper = styled.div`
 
   input[type="color"] {
     padding-left: 56px;
-    width:300px;
     overflow: hidden;
   }
 `;
