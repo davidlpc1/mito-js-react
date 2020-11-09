@@ -9,9 +9,13 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import useForm from '../../../hooks/useForm';
 import { Button } from '../../../components/Button';
+import videosRepository from '../../../repositories/video';
 
 export default function CadastroVideo() {
   const { handleChange, valores } = useForm({
+    titulo: '',
+    url: 'https://youtube.com/watch?v=',
+    categoria: '',
   });
   const history = useHistory();
 
@@ -21,8 +25,18 @@ export default function CadastroVideo() {
 
       <form onSubmit={(event) => {
         event.preventDefault();
-        alert(`O vídeo ${valores.titulo || ''} foi cadastrado`);
-        history.push('/');
+        videosRepository.create({
+          titulo: valores.titulo,
+          url: valores.url,
+          categoriaId: 1,
+        })
+          .then(() => {
+            alert(`O vídeo ${valores.titulo || ''} foi cadastrado`);
+            history.push('/');
+          })
+          .catch(() => {
+            alert('O cadastro falhou :(');
+          });
       }}
       >
         <FormField
@@ -31,11 +45,19 @@ export default function CadastroVideo() {
           value={valores.titulo}
           onChange={handleChange}
         />
+
         <FormField
           label="URL"
           type="url"
           name="url"
           value={valores.url}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Categoria"
+          name="categoria"
+          value={valores.categoria}
           onChange={handleChange}
         />
 
