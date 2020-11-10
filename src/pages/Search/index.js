@@ -2,7 +2,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault';
 import videosRepository from '../../repositories/video';
 import VideoCard from '../../components/Carousel/components/VideoCard/index';
@@ -39,9 +39,9 @@ const SearchPage = () => {
         ))}
       </Slider>
 
-      <a href="/">
+      <Link to="/">
         Voltar à Home
-      </a>
+      </Link>
 
     </PageDefault>
   );
