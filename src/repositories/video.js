@@ -22,6 +22,20 @@ function create(objetoDoVideo) {
     });
 }
 
+function search(videoName) {
+  return fetch(`${URL_VIDEOS}?q=${videoName}`)
+    .then(async (response) => {
+      if (response.ok) {
+        const resposta = await response.json();
+
+        return resposta;
+      }
+
+      throw new Error('Não foi possível encontrar os dados :(');
+    });
+}
+
 export default {
   create,
+  search,
 };
